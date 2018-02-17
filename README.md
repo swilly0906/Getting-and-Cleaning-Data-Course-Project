@@ -8,27 +8,28 @@ The purpose of this project is to demonstrate your ability to collect, work with
 * [Step4 : Appropriately labels the data set with descriptive variable names.](#step4)
 * [Step5 : From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.](#step5)
 
-Before first step, I have to laod my necessary tool
+Before first step, I have to laod my necessary Rpackage and all file
 
-<!-- --> 
-Use my package
-library(dplyr)
-
-Load all necessary data
-train data
-activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
-feature <- read.table("./UCI HAR Dataset/features.txt")
-subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
-x_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
-
-subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
-x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+     library(dplyr)   
+     
+     activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+     feature <- read.table("./UCI HAR Dataset/features.txt")
+     subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+     x_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+     y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+     subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+     x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+     y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
 
 
 <h1 id=step1>Step1</h1>
-1122
+I have to combine x test/train and y test/train data.And,I add two column `ID` and `activity`
+     
+     x_train_cbind <- cbind(subject_train ,y_train, x_train)  
+     y_test_cbind <- cbind(subject_test, y_test, x_test)
+     x_y_test_train <- rbind(x_train_cbind, y_test_cbind)
+     names(x_y_test_train)[1:2] <- c("ID", "activity")
+
 
 
 <h1 id=step2>Step2</h1>
