@@ -23,7 +23,7 @@ Before first step, I have to laod my necessary Rpackage and all file
 
 
 <h1 id=step1>Step1</h1>
-I have to combine x test/train and y test/train data.And,I rename first/second column is ID/activity
+I have to combine x test/train and y test/train data. And, I rename first/second column is ID/activity
      
      x_train_cbind <- cbind(subject_train ,y_train, x_train)  
      y_test_cbind <- cbind(subject_test, y_test, x_test)
@@ -33,7 +33,7 @@ I have to combine x test/train and y test/train data.And,I rename first/second c
 <h1 id=step2>Step2</h1>
 
 First, I find the value in this table(x_y_test_train) is very small universally, so I think 
-mean value is usually a little bigger (because value near zero probably standard deviation)
+mean value is usually a little bigger (because value near zero probably standard deviation).<br>
 Second, I use below command to search/check what number of mean/standard deviation.
 
      table(grepl("mean[()]",feature$V2))
