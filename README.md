@@ -7,6 +7,7 @@ The purpose of this project is to demonstrate your ability to collect, work with
 * [Step3 : Uses descriptive activity names to name the activities in the data set.](#step3)
 * [Step4 : Appropriately labels the data set with descriptive variable names.](#step4)
 * [Step5 : From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.](#step5)
+* [Conclusion](#conclusion)
 
 Before first step, I have to laod my necessary Rpackage and all file
 
@@ -54,7 +55,7 @@ The rank 1st(ID) and 2nd(activity) is not my scope of selection.Next, I want to 
      select_std <- names(all_prop_var[order(rank(all_prop_var), decreasing = TRUE)][36:68])
      select_std
 I think this idea is reliable.Because mean value is larger than std value in normal situation.
-At last, I select the ideal variable in the table x_y_test_train and R code is listed below.
+At last, I select the ideal variable in the new table filter_x_y and R code is listed below.
 
      filter_x_y <- x_y_test_train[,c("ID", "activity", select_mean, select_std)]
 
@@ -80,8 +81,8 @@ Suddenly, I simply find some std include negative value.However,I know this nega
 
      test_positive <- function(vars){all(vars>0)}
      table(sapply(x_y_test_train,test_positive))
-I find the terrible fact that all variable(exclude ID&activity) have negative numeric. I decide that I keep all variable in the filter_x_y. I just feel this data is a little strange since I found all variable(exclude ID&activity) have negative numeric.
-To sum up,I don't want to change anything.
+I find the terrible fact that all variable(exclude ID&activity) have negative numeric. I decide that I keep all variable in the filter_x_y. I just feel this data is a little strange since I found all variable(exclude ID&activity) have negative numeric.<br>
+To sum up,I don't want to change anything.<br>
 P.S. I Appropriately label the data set in Codebook.md .
 
 <h1 id=step5>Step5</h1>
@@ -91,4 +92,8 @@ I calculate mean for each column to reduce dimension.And, I make a new table tid
      tidydata <- as.data.frame(tidydata)
 At the same time, I make the data(file) for this assignment.
 
-     write.table(tidydata,file = "./UCI HAR Dataset/tidytable.txt")
+     write.table(tidydata,file = "./UCI HAR Dataset/tidytable.txt", row.names = FALSE)
+
+<h1 id=conclusion>Conclusion</h1>
+
+To be honest, I do this lecture Getting and Cleaning Data for almost two month because I was so busy in my job. At least,I think I have a little progress Whatever this assignment is right or wrong.Thank you for my peer,mentor,and teacher in this lecture.
